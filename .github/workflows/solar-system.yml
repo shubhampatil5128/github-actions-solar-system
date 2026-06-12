@@ -75,8 +75,6 @@ jobs:
       permissions:
         contents: read
         packages: write
-        attestations: write
-        id-token: write
       needs: [unit-testing, code-coverage]
       steps:
         - name: checkout-code
