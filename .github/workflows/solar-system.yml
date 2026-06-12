@@ -93,5 +93,5 @@ jobs:
           uses: docker/build-push-action@v7
           with:
               push: true
-              tags: ghcr.io/patilshubham5128/solar-system:$GITHUB_SHA
+              tags: 'ghcr.io/${{ github.repository_owner }}/solar-system:${{ github.sha }}'
 
