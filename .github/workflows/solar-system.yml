@@ -23,9 +23,6 @@ jobs:
           uses: actions/setup-node@v4
           with:
             node-version: 20
-
-        - name: list the files
-          run: ls
             
         # - name: Cache NPM dependencies
         #   uses: actions/cache@v5
@@ -34,6 +31,9 @@ jobs:
         #     key: ${{ runner.os }}-node-${{ hashFiles('./package-lock.json') }}
         - name: Install Dependencies
           run: npm install
+
+        - name: list the files
+          run: ls
     
         - name: Unit Testing
           continue-on-error: true
