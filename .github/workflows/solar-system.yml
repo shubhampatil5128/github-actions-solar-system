@@ -92,7 +92,7 @@
 
         - name: Run Commands
           run: |
-            sleep 60
+            sleep 5
             kubectl -n kube-system get pod
             echo ""
             set +e
