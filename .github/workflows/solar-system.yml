@@ -84,6 +84,8 @@
       needs: docker
       runs-on: ubuntu-latest
       environment: development
+      # outputs:
+      #   APP_INGRESS_URL: ${{ }}
       steps:
         - name: install kubernetes
           uses: helm/kind-action@v1
@@ -92,6 +94,7 @@
           run: |
             sleep 60
             kubectl -n kube-system get pod
+            echo ""
             set +e
             REPO_OWNER_LC="${GITHUB_REPOSITORY_OWNER,,}"
             kubectl run solar --image ghcr.io/${REPO_OWNER_LC}/solar-system:${{ github.sha }} \
@@ -101,4 +104,12 @@
             set -e
             echo "kubectl returned $?"
             kubectl -n default get pod
+            kubectl get ing
             sleep 10
+    # integration-test:
+    #   runs-on: ubuntu-latest
+    #   needs: dev-deploy
+    #   uses: ./.github/workflows/reusable-workflow.yml
+    #   with:
+    #     ingrees_url: ${{ needs.dev-deploy.outputs.APP_INGRESS_URL }}
+        
