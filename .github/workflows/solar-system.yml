@@ -94,7 +94,6 @@
           run: |
             sleep 5
             kubectl -n kube-system get pod
-            echo ""
             set +e
             REPO_OWNER_LC="${GITHUB_REPOSITORY_OWNER,,}"
             kubectl run solar --image ghcr.io/${REPO_OWNER_LC}/solar-system:${{ github.sha }} \
