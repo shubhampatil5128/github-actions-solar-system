@@ -54,6 +54,8 @@
          retention-days: 5         
     docker:
       runs-on: ubuntu-latest
+      permissions: 
+          packages: write
       needs:
        - unit-testing
        - code-coverage
